@@ -1,0 +1,41 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.10'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.aop'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+
+	testImplementation 'org.junit.jupiter:junit-jupiter-api'
+	testImplementation 'junit:junit'
+
+//	implementation 'org.slf4j:slf4j-api:1.7.28'
+////	implementation 'org.slf4j:slf4j-simple:1.7.28'
+////	implementation 'org.apache.directory.studio:org.slf4j.api:1.7.2'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
